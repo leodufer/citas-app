@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MediFlow - Gestión de Citas Médicas</title>
+  <title>MediFlow - Gestión de Citas Médicas Simplificada</title>
+  <meta name="description" content="Optimiza el flujo de tu consulta médica con MediFlow. Gestión de citas en tiempo real, estadísticas, filtros avanzados y diseño premium adaptativo.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
   <!-- Header / Navigation -->
@@ -17,173 +18,158 @@
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="logo-icon"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
         <h1>MediFlow</h1>
       </div>
-      <button class="btn btn-primary" id="btnOpenNewAppointment" aria-haspopup="dialog">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
-        Nueva Cita
-      </button>
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a href="#features" class="nav-link">Características</a>
+        <a href="#about" class="nav-link">Nosotros</a>
+        <a href="/home" class="btn btn-primary" id="btnGoToDashboard">
+          Dashboard
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </nav>
     </div>
   </header>
 
-  <!-- Main Container -->
-  <main class="app-container">
+  <!-- Landing Content -->
+  <main class="landing-main">
     
-    <!-- Stats Section -->
-    <section class="stats-grid" aria-label="Estadísticas de citas">
-      <div class="stat-card">
-        <div class="stat-icon icon-blue">
-          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-container">
+        <div class="hero-content">
+          <div class="badge">Nueva versión 2.0 disponible</div>
+          <h2 class="hero-title">El futuro de la <span>gestión médica</span> hoy</h2>
+          <p class="hero-subtitle">Simplifica el agendamiento de citas, optimiza tu tiempo y ofrece una experiencia excepcional a tus pacientes con la plataforma más intuitiva y moderna.</p>
+          <div class="hero-actions">
+            <a href="/home" class="btn btn-primary btn-lg">
+              Comenzar Ahora
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+            <a href="#features" class="btn btn-secondary btn-lg">Saber Más</a>
+          </div>
         </div>
-        <div class="stat-info">
-          <span class="stat-label">Total Citas</span>
-          <span class="stat-value" id="statTotal">0</span>
-        </div>
-      </div>
-      
-      <div class="stat-card">
-        <div class="stat-icon icon-yellow">
-          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        </div>
-        <div class="stat-info">
-          <span class="stat-label">Pendientes</span>
-          <span class="stat-value" id="statScheduled">0</span>
-        </div>
-      </div>
-
-      <div class="stat-card">
-        <div class="stat-icon icon-green">
-          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-        </div>
-        <div class="stat-info">
-          <span class="stat-label">Completadas</span>
-          <span class="stat-value" id="statCompleted">0</span>
-        </div>
-      </div>
-
-      <div class="stat-card">
-        <div class="stat-icon icon-red">
-          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>
-        </div>
-        <div class="stat-info">
-          <span class="stat-label">Canceladas</span>
-          <span class="stat-value" id="statCancelled">0</span>
+        <div class="hero-graphic">
+          <!-- Premium Dashboard Preview Mockup using CSS/SVG -->
+          <div class="mockup-window">
+            <div class="mockup-header">
+              <div class="dots">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+              </div>
+              <div class="mockup-address">mediflow.io/home</div>
+            </div>
+            <div class="mockup-body">
+              <div class="mockup-stats">
+                <div class="m-stat">
+                  <div class="m-val">12</div>
+                  <div class="m-lbl">Total Citas</div>
+                </div>
+                <div class="m-stat text-yellow">
+                  <div class="m-val">4</div>
+                  <div class="m-lbl">Pendientes</div>
+                </div>
+                <div class="m-stat text-green">
+                  <div class="m-val">8</div>
+                  <div class="m-lbl">Completadas</div>
+                </div>
+              </div>
+              <div class="mockup-list">
+                <div class="mockup-item">
+                  <div class="item-line1">
+                    <strong>Dra. Clara Martínez</strong>
+                    <span class="badge-scheduled">Programada</span>
+                  </div>
+                  <div class="item-line2">Pediatría • 10:30 AM</div>
+                </div>
+                <div class="mockup-item">
+                  <div class="item-line1">
+                    <strong>Dr. Alejandro Ruiz</strong>
+                    <span class="badge-completed">Completada</span>
+                  </div>
+                  <div class="item-line2">Cardiología • 11:45 AM</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Content Area & Controls -->
-    <section class="content-header">
-      <div class="filter-bar">
-        <button class="filter-btn active" data-filter="all">Todas</button>
-        <button class="filter-btn" data-filter="scheduled">Programadas</button>
-        <button class="filter-btn" data-filter="completed">Completadas</button>
-        <button class="filter-btn" data-filter="cancelled">Canceladas</button>
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+      <div class="section-header">
+        <h3 class="section-title">Diseñado para optimizar tu jornada</h3>
+        <p class="section-subtitle">Todo lo que necesitas para administrar tu consulta en un solo lugar.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon bg-blue-tint">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+          </div>
+          <h4>Agenda Inteligente</h4>
+          <p>Organiza, edita y gestiona citas médicas de forma visual e intuitiva con un par de clics.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon bg-yellow-tint">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" x2="18" y1="20" y2="10"/><line x1="12" x2="12" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="14"/></svg>
+          </div>
+          <h4>Estadísticas en Tiempo Real</h4>
+          <p>Mide el rendimiento del consultorio con contadores automatizados por estado de cita.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon bg-green-tint">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
+          </div>
+          <h4>Filtros Avanzados</h4>
+          <p>Encuentra citas rápidamente segmentando por categorías: programadas, completadas o canceladas.</p>
+        </div>
       </div>
     </section>
 
-    <!-- Loading State -->
-    <div id="loadingIndicator" class="loading-container">
-      <div class="spinner"></div>
-      <p>Cargando citas...</p>
-    </div>
+    <!-- About/Impact Section -->
+    <section id="about" class="impact-section">
+      <div class="impact-container">
+        <div class="impact-stats">
+          <div class="impact-stat-item">
+            <span class="stat-num">99.8%</span>
+            <span class="stat-desc">Disponibilidad del Servicio</span>
+          </div>
+          <div class="impact-stat-item">
+            <span class="stat-num">+15K</span>
+            <span class="stat-desc">Citas Agendadas</span>
+          </div>
+          <div class="impact-stat-item">
+            <span class="stat-num">&lt;2 min</span>
+            <span class="stat-desc">Tiempo de Configuración</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <!-- Empty State -->
-    <div id="emptyState" class="empty-state hidden">
-      <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="empty-icon"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/><path d="m9 16 2 2 4-4"/></svg>
-      <h2>No hay citas registradas</h2>
-      <p>Comienza programando tu primera consulta médica haciendo clic en "Nueva Cita".</p>
-    </div>
-
-    <!-- Grid / List of appointments -->
-    <div id="appointmentsGrid" class="appointments-grid">
-      <!-- Citas se renderizan dinámicamente aquí -->
-    </div>
+    <!-- CTA Section -->
+    <section class="cta-banner-section">
+      <div class="cta-banner">
+        <h3>Lleva el control de tu agenda médica hoy</h3>
+        <p>MediFlow es gratuito y no requiere tarjeta de crédito para comenzar. Diseñado para doctores, terapeutas y clínicas independientes.</p>
+        <a href="/home" class="btn btn-primary btn-lg">
+          Acceder al Dashboard
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+    </section>
   </main>
 
-  <!-- Notification Toast -->
-  <div id="notificationToast" class="toast hidden" role="alert" aria-live="assertive"></div>
-
-  <!-- Booking Modal Dialog -->
-  <dialog id="appointmentModal" closedby="any" class="modal-dialog" aria-labelledby="modalTitle">
-    <div class="modal-content">
-      <header class="modal-header">
-        <h2 id="modalTitle">Nueva Cita Médica</h2>
-        <button class="btn-close" id="btnCloseModal" aria-label="Cerrar modal">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
-        </button>
-      </header>
-      <form id="appointmentForm" class="modal-body" novalidate>
-        <div class="form-group">
-          <label for="patientName">Nombre del Paciente <span class="required">*</span></label>
-          <input type="text" id="patientName" name="patientName" placeholder="Ej. Juan Pérez" required autocomplete="name">
-          <span class="error-message" id="errorPatientName">El nombre es requerido.</span>
-        </div>
-
-        <div class="form-group">
-          <label for="email">Correo Electrónico <span class="required">*</span></label>
-          <input type="email" id="email" name="email" placeholder="Ej. juan@example.com" required autocomplete="email">
-          <span class="error-message" id="errorEmail">Introduce un correo electrónico válido.</span>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label for="date">Fecha <span class="required">*</span></label>
-            <input type="date" id="date" name="date" required>
-            <span class="error-message" id="errorDate">Selecciona una fecha válida.</span>
-          </div>
-
-          <div class="form-group">
-            <label for="time">Hora <span class="required">*</span></label>
-            <input type="time" id="time" name="time" required>
-            <span class="error-message" id="errorTime">Selecciona una hora válida.</span>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="service">Servicio Médico <span class="required">*</span></label>
-          <select id="service" name="service" required>
-            <option value="" disabled selected>Selecciona una especialidad</option>
-            <option value="Medicina General">Medicina General</option>
-            <option value="Odontología">Odontología</option>
-            <option value="Pediatría">Pediatría</option>
-            <option value="Cardiología">Cardiología</option>
-            <option value="Dermatología">Dermatología</option>
-            <option value="Nutrición">Nutrición</option>
-          </select>
-          <span class="error-message" id="errorService">Por favor, selecciona un servicio.</span>
-        </div>
-
-        <div class="form-group">
-          <label for="notes">Notas o Sintomatología</label>
-          <textarea id="notes" name="notes" rows="3" placeholder="Describe brevemente el motivo de la consulta o notas relevantes..."></textarea>
-        </div>
-
-        <footer class="modal-actions">
-          <button type="button" class="btn btn-secondary" id="btnCancelModal">Cancelar</button>
-          <button type="submit" class="btn btn-primary">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
-            Agendar Cita
-          </button>
-        </footer>
-      </form>
-    </div>
-  </dialog>
-
-  <!-- Delete Confirmation Dialog -->
-  <dialog id="deleteConfirmModal" closedby="any" class="modal-dialog mini-modal" aria-labelledby="deleteModalTitle">
-    <div class="modal-content">
-      <header class="modal-header">
-        <h2 id="deleteModalTitle">¿Eliminar Cita?</h2>
-      </header>
-      <div class="modal-body">
-        <p>¿Estás seguro de que deseas eliminar esta cita? Esta acción no se puede deshacer.</p>
+  <!-- Footer -->
+  <footer class="landing-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="logo-icon"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+        <span>MediFlow</span>
       </div>
-      <footer class="modal-actions">
-        <button type="button" class="btn btn-secondary" id="btnCancelDelete">Cancelar</button>
-        <button type="button" class="btn btn-danger" id="btnConfirmDelete">Eliminar</button>
-      </footer>
+      <p class="footer-copyright">&copy; 2026 MediFlow. Diseñado para profesionales de la salud. Todos los derechos reservados.</p>
     </div>
-  </dialog>
-
-  <script src="app.js"></script>
+  </footer>
 </body>
 </html>
