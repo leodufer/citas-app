@@ -10,94 +10,241 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Header / Navigation -->
-  <header class="app-header">
-    <div class="header-container">
-      <div class="logo">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="logo-icon"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
-        <h1>MediFlow</h1>
+  <!-- Landing Page View -->
+  <div id="landingView" class="route-view hidden">
+    <!-- Landing Header -->
+    <header class="landing-header">
+      <div class="header-container">
+        <div class="logo">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="logo-icon"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+          <h1>MediFlow</h1>
+        </div>
+        <nav class="landing-nav">
+          <a href="#services" class="nav-link">Servicios</a>
+          <a href="#features" class="nav-link">Beneficios</a>
+        </nav>
+        <div class="header-actions">
+          <a href="/home" class="btn btn-primary btn-go-dashboard">Acceder al Dashboard</a>
+        </div>
       </div>
-      <button class="btn btn-primary" id="btnOpenNewAppointment" aria-haspopup="dialog">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
-        Nueva Cita
-      </button>
-    </div>
-  </header>
+    </header>
 
-  <!-- Main Container -->
-  <main class="app-container">
-    
-    <!-- Stats Section -->
-    <section class="stats-grid" aria-label="Estadísticas de citas">
-      <div class="stat-card">
-        <div class="stat-icon icon-blue">
-          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
+    <!-- Hero Section -->
+    <section class="landing-hero">
+      <div class="hero-container">
+        <div class="hero-content">
+          <span class="badge">Tu salud en armonía, tu tiempo bajo control</span>
+          <h2 class="hero-title">El flujo inteligente para la gestión de tus citas médicas</h2>
+          <p class="hero-description">MediFlow optimiza la programación, seguimiento y control de tus consultas de salud en un entorno premium, intuitivo y responsivo. Diseñado para simplificar tu bienestar.</p>
+          <div class="hero-actions">
+            <a href="/home" class="btn btn-primary btn-large btn-go-dashboard">
+              Comenzar Ahora
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+            <a href="#features" class="btn btn-secondary btn-large">Saber Más</a>
+          </div>
         </div>
-        <div class="stat-info">
-          <span class="stat-label">Total Citas</span>
-          <span class="stat-value" id="statTotal">0</span>
+        <div class="hero-image-container">
+          <img src="hero_medical_illustration.png" alt="Ilustración Médica MediFlow" class="hero-image">
         </div>
       </div>
+    </section>
+
+    <!-- Services Grid Section -->
+    <section id="services" class="landing-services">
+      <div class="section-header">
+        <span class="section-tag">Especialidades</span>
+        <h2 class="section-title">Servicios Médicos a Tu Disposición</h2>
+        <p class="section-subtitle">Gestión centralizada para diversas áreas del cuidado de tu salud con profesionales calificados.</p>
+      </div>
+      <div class="services-container">
+        <div class="service-promo-card" style="--accent-color: #0284c7;">
+          <div class="service-promo-icon icon-blue">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+          </div>
+          <h3>Medicina General</h3>
+          <p>Tu primer paso para un diagnóstico certero y el cuidado continuo de tu bienestar general.</p>
+        </div>
+
+        <div class="service-promo-card" style="--accent-color: #8b5cf6;">
+          <div class="service-promo-icon" style="background-color: rgba(139, 92, 246, 0.15); color: #8b5cf6;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <h3>Odontología</h3>
+          <p>Tratamientos dentales integrales para mantener tu sonrisa saludable, radiante y protegida.</p>
+        </div>
+
+        <div class="service-promo-card" style="--accent-color: #f97316;">
+          <div class="service-promo-icon" style="background-color: rgba(249, 115, 22, 0.15); color: #f97316;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H5Zm0 4h14M5 12h14M5 17h14"/></svg>
+          </div>
+          <h3>Pediatría</h3>
+          <p>Cuidado médico con cariño y atención especializada para el crecimiento sano de tus pequeños.</p>
+        </div>
+
+        <div class="service-promo-card" style="--accent-color: #ef4444;">
+          <div class="service-promo-icon icon-red">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <h3>Cardiología</h3>
+          <p>Monitoreo, prevención y cuidado avanzado de la salud de tu corazón con tecnología de punta.</p>
+        </div>
+
+        <div class="service-promo-card" style="--accent-color: #ec4899;">
+          <div class="service-promo-icon" style="background-color: rgba(236, 72, 153, 0.15); color: #ec4899;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 5-12.01V5a5 5 0 0 0-10 0v4.99A7 7 0 0 0 12 22Zm0 0V10"/></svg>
+          </div>
+          <h3>Dermatología</h3>
+          <p>Especialistas en diagnosticar y tratar todo tipo de afecciones de la piel, cabello y uñas.</p>
+        </div>
+
+        <div class="service-promo-card" style="--accent-color: #10b981;">
+          <div class="service-promo-icon icon-green">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0 0-10 10c0 5.523 4.477 10 10 10s10-4.477 10-10A10 10 0 0 0 12 2Zm1 10h-2V7h2v5Zm0 4h-2v-2h2v2Z"/></svg>
+          </div>
+          <h3>Nutrición</h3>
+          <p>Asesoría personalizada para balancear tu alimentación y alcanzar un estilo de vida saludable.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="landing-features">
+      <div class="section-header">
+        <span class="section-tag">Beneficios</span>
+        <h2 class="section-title">¿Por qué elegir MediFlow?</h2>
+        <p class="section-subtitle">Hemos rediseñado la gestión de consultas para ofrecerte la experiencia más fluida y eficiente.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon icon-blue">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+          </div>
+          <h3>Agendamiento Veloz</h3>
+          <p>Agendar una nueva cita toma solo segundos con nuestro formulario modal simplificado e intuitivo.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon icon-green">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <h3>Control de Estados</h3>
+          <p>Monitorea si tus citas están Programadas, Completadas o Canceladas al instante con colores visuales claros.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon icon-yellow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3>Estadísticas en Tiempo Real</h3>
+          <p>El dashboard cuenta con contadores interactivos que se animan dinámicamente cuando el estado de las citas cambia.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="landing-footer">
+      <div class="footer-container">
+        <div class="footer-brand">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="logo-icon"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+          <h2>MediFlow</h2>
+        </div>
+        <p class="copyright">&copy; 2026 MediFlow. Todos los derechos reservados. Diseñado para profesionales de la salud.</p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Dashboard Page View -->
+  <div id="dashboardView" class="route-view hidden">
+    <!-- Header / Navigation -->
+    <header class="app-header">
+      <div class="header-container">
+        <div class="logo">
+          <a href="/" class="btn-logo-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="logo-icon"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+            <h1>MediFlow</h1>
+          </a>
+        </div>
+        <button class="btn btn-primary" id="btnOpenNewAppointment" aria-haspopup="dialog">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+          Nueva Cita
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="app-container">
       
-      <div class="stat-card">
-        <div class="stat-icon icon-yellow">
-          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      <!-- Stats Section -->
+      <section class="stats-grid" aria-label="Estadísticas de citas">
+        <div class="stat-card">
+          <div class="stat-icon icon-blue">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
+          </div>
+          <div class="stat-info">
+            <span class="stat-label">Total Citas</span>
+            <span class="stat-value" id="statTotal">0</span>
+          </div>
         </div>
-        <div class="stat-info">
-          <span class="stat-label">Pendientes</span>
-          <span class="stat-value" id="statScheduled">0</span>
+        
+        <div class="stat-card">
+          <div class="stat-icon icon-yellow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div class="stat-info">
+            <span class="stat-label">Pendientes</span>
+            <span class="stat-value" id="statScheduled">0</span>
+          </div>
         </div>
+
+        <div class="stat-card">
+          <div class="stat-icon icon-green">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          </div>
+          <div class="stat-info">
+            <span class="stat-label">Completadas</span>
+            <span class="stat-value" id="statCompleted">0</span>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon icon-red">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>
+          </div>
+          <div class="stat-info">
+            <span class="stat-label">Canceladas</span>
+            <span class="stat-value" id="statCancelled">0</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Content Area & Controls -->
+      <section class="content-header">
+        <div class="filter-bar">
+          <button class="filter-btn active" data-filter="all">Todas</button>
+          <button class="filter-btn" data-filter="scheduled">Programadas</button>
+          <button class="filter-btn" data-filter="completed">Completadas</button>
+          <button class="filter-btn" data-filter="cancelled">Canceladas</button>
+        </div>
+      </section>
+
+      <!-- Loading State -->
+      <div id="loadingIndicator" class="loading-container">
+        <div class="spinner"></div>
+        <p>Cargando citas...</p>
       </div>
 
-      <div class="stat-card">
-        <div class="stat-icon icon-green">
-          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-        </div>
-        <div class="stat-info">
-          <span class="stat-label">Completadas</span>
-          <span class="stat-value" id="statCompleted">0</span>
-        </div>
+      <!-- Empty State -->
+      <div id="emptyState" class="empty-state hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="empty-icon"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/><path d="m9 16 2 2 4-4"/></svg>
+        <h2>No hay citas registradas</h2>
+        <p>Comienza programando tu primera consulta médica haciendo clic en "Nueva Cita".</p>
       </div>
 
-      <div class="stat-card">
-        <div class="stat-icon icon-red">
-          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>
-        </div>
-        <div class="stat-info">
-          <span class="stat-label">Canceladas</span>
-          <span class="stat-value" id="statCancelled">0</span>
-        </div>
+      <!-- Grid / List of appointments -->
+      <div id="appointmentsGrid" class="appointments-grid">
+        <!-- Citas se renderizan dinámicamente aquí -->
       </div>
-    </section>
-
-    <!-- Content Area & Controls -->
-    <section class="content-header">
-      <div class="filter-bar">
-        <button class="filter-btn active" data-filter="all">Todas</button>
-        <button class="filter-btn" data-filter="scheduled">Programadas</button>
-        <button class="filter-btn" data-filter="completed">Completadas</button>
-        <button class="filter-btn" data-filter="cancelled">Canceladas</button>
-      </div>
-    </section>
-
-    <!-- Loading State -->
-    <div id="loadingIndicator" class="loading-container">
-      <div class="spinner"></div>
-      <p>Cargando citas...</p>
-    </div>
-
-    <!-- Empty State -->
-    <div id="emptyState" class="empty-state hidden">
-      <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="empty-icon"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/><path d="m9 16 2 2 4-4"/></svg>
-      <h2>No hay citas registradas</h2>
-      <p>Comienza programando tu primera consulta médica haciendo clic en "Nueva Cita".</p>
-    </div>
-
-    <!-- Grid / List of appointments -->
-    <div id="appointmentsGrid" class="appointments-grid">
-      <!-- Citas se renderizan dinámicamente aquí -->
-    </div>
-  </main>
+    </main>
+  </div>
 
   <!-- Notification Toast -->
   <div id="notificationToast" class="toast hidden" role="alert" aria-live="assertive"></div>

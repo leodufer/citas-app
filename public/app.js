@@ -4,6 +4,8 @@ let currentFilter = 'all';
 let deleteTargetId = null;
 
 // DOM Elements
+const landingView = document.getElementById('landingView');
+const dashboardView = document.getElementById('dashboardView');
 const appointmentsGrid = document.getElementById('appointmentsGrid');
 const loadingIndicator = document.getElementById('loadingIndicator');
 const emptyState = document.getElementById('emptyState');
@@ -45,10 +47,53 @@ const SERVICE_COLORS = {
 // Initialization
 // ----------------------------------------------------
 document.addEventListener('DOMContentLoaded', () => {
-  fetchAppointments();
   setupEventListeners();
   setupDialogLightDismissFallback();
+  setupRouting();
 });
+
+// ----------------------------------------------------
+// Client-Side Routing (SPA)
+// ----------------------------------------------------
+function setupRouting() {
+  // Listen for browser navigation (back/forward)
+  window.addEventListener('popstate', router);
+
+  // Intercept click events on links for SPA routing
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('a');
+    if (!link) return;
+
+    const href = link.getAttribute('href');
+    
+    // Check if it's an internal route we want to handle
+    if (href && (href === '/' || href === '/home')) {
+      e.preventDefault();
+      if (window.location.pathname !== href) {
+        history.pushState(null, '', href);
+        router();
+      }
+    }
+  });
+
+  // Run router on initial load
+  router();
+}
+
+function router() {
+  const path = window.location.pathname;
+
+  if (path === '/home') {
+    landingView.classList.add('hidden');
+    dashboardView.classList.remove('hidden');
+    // Fetch latest appointments when entering the dashboard
+    fetchAppointments();
+  } else {
+    landingView.classList.remove('hidden');
+    dashboardView.classList.add('hidden');
+  }
+}
+
 
 // ----------------------------------------------------
 // Event Listeners Setup
