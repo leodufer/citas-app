@@ -10,94 +10,269 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Header / Navigation -->
-  <header class="app-header">
-    <div class="header-container">
-      <div class="logo">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="logo-icon"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
-        <h1>MediFlow</h1>
+  <!-- VIEW: LANDING PAGE -->
+  <div id="landingView" class="view">
+    <!-- Header / Navigation -->
+    <header class="app-header">
+      <div class="header-container">
+        <div class="logo clickable-logo" onclick="navigateTo('/')">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="logo-icon"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+          <h1>MediFlow</h1>
+        </div>
+        <nav class="landing-nav">
+          <a href="#features" class="nav-link" onclick="event.preventDefault(); document.getElementById('features').scrollIntoView({ behavior: 'smooth' });">Características</a>
+          <a href="#stats" class="nav-link" onclick="event.preventDefault(); document.getElementById('stats').scrollIntoView({ behavior: 'smooth' });">Estadísticas</a>
+        </nav>
+        <button class="btn btn-primary" onclick="navigateTo('/home')">
+          Dashboard
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </button>
       </div>
-      <button class="btn btn-primary" id="btnOpenNewAppointment" aria-haspopup="dialog">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
-        Nueva Cita
-      </button>
-    </div>
-  </header>
+    </header>
 
-  <!-- Main Container -->
-  <main class="app-container">
-    
+    <!-- Hero Section -->
+    <section class="landing-hero">
+      <div class="hero-container">
+        <div class="hero-content">
+          <span class="hero-tag">Gestión Médica Simplificada</span>
+          <h2 class="hero-title">Tu salud en perfecta <span class="gradient-text">sintonía</span></h2>
+          <p class="hero-subtitle">Organiza tus citas médicas de forma rápida, intuitiva y segura. MediFlow es el asistente digital que necesitas para ti y tu familia.</p>
+          <div class="hero-actions">
+            <button class="btn btn-primary btn-lg" onclick="navigateTo('/home')">
+              Acceder al Dashboard
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </button>
+            <a href="#features" class="btn btn-secondary btn-lg" onclick="event.preventDefault(); document.getElementById('features').scrollIntoView({ behavior: 'smooth' });">Conocer más</a>
+          </div>
+        </div>
+        <div class="hero-graphic">
+          <svg viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg" class="animated-hero-svg">
+            <defs>
+              <linearGradient id="circleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="var(--primary-color)" stop-opacity="0.8"/>
+                <stop offset="100%" stop-color="var(--accent-blue)" stop-opacity="0.3"/>
+              </linearGradient>
+              <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="var(--bg-secondary)"/>
+                <stop offset="100%" stop-color="var(--bg-primary)"/>
+              </linearGradient>
+            </defs>
+            <circle cx="250" cy="200" r="160" fill="url(#circleGrad)" />
+            <circle cx="100" cy="100" r="40" fill="var(--accent-yellow-bg)" opacity="0.6"/>
+            
+            <!-- Calendar Card Mockup -->
+            <g class="svg-floating-card-1">
+              <rect x="60" y="80" width="240" height="180" rx="16" fill="url(#cardGrad)" stroke="var(--border-color)" stroke-width="2" />
+              <!-- Calendar Header -->
+              <rect x="80" y="100" width="200" height="24" rx="6" fill="var(--primary-light)"/>
+              <circle cx="95" cy="112" r="6" fill="var(--primary-color)"/>
+              <rect x="115" y="109" width="80" height="6" rx="3" fill="var(--primary-color)" opacity="0.8"/>
+              
+              <!-- Calendar Items -->
+              <rect x="80" y="140" width="200" height="32" rx="8" fill="var(--bg-secondary)" stroke="var(--border-color)"/>
+              <circle cx="98" cy="156" r="8" fill="var(--accent-blue-bg)"/>
+              <rect x="116" y="153" width="90" height="6" rx="3" fill="var(--text-primary)" opacity="0.8"/>
+              
+              <rect x="80" y="182" width="200" height="32" rx="8" fill="var(--bg-secondary)" stroke="var(--border-color)"/>
+              <circle cx="98" cy="198" r="8" fill="var(--accent-green-bg)"/>
+              <rect x="116" y="195" width="110" height="6" rx="3" fill="var(--text-primary)" opacity="0.8"/>
+
+              <rect x="80" y="224" width="200" height="20" rx="6" fill="var(--bg-secondary)" stroke="var(--border-color)" opacity="0.7"/>
+            </g>
+
+            <!-- Stats/Overlay Mockup -->
+            <g class="svg-floating-card-2">
+              <rect x="260" y="190" width="180" height="130" rx="16" fill="url(#cardGrad)" stroke="var(--border-color)" stroke-width="2" />
+              <rect x="280" y="210" width="40" height="40" rx="8" fill="var(--accent-green-bg)"/>
+              <path d="M292 230L297 235L307 225" stroke="var(--accent-green)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="330" y="215" width="90" height="10" rx="5" fill="var(--text-primary)"/>
+              <rect x="330" y="235" width="60" height="8" rx="4" fill="var(--text-muted)"/>
+              
+              <line x1="280" y1="270" x2="420" y2="270" stroke="var(--border-color)" stroke-width="1"/>
+              
+              <rect x="280" y="285" width="140" height="8" rx="4" fill="var(--primary-color)" opacity="0.3"/>
+              <rect x="280" y="297" width="100" height="8" rx="4" fill="var(--primary-color)" opacity="0.7"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="landing-features">
+      <div class="section-container">
+        <h3 class="section-title">¿Por qué elegir MediFlow?</h3>
+        <p class="section-subtitle">Diseñado para ofrecer la mejor experiencia en control y agendamiento de turnos médicos.</p>
+        
+        <div class="features-grid">
+          <!-- Card 1 -->
+          <div class="feature-card">
+            <div class="feature-icon icon-teal">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/><path d="m9 16 2 2 4-4"/></svg>
+            </div>
+            <h4>Agendamiento en 1 Clic</h4>
+            <p>Agenda, cancela o completa citas de forma instantánea. Gestión fluida diseñada para ahorrar tiempo.</p>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="feature-card">
+            <div class="feature-icon icon-indigo">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+            </div>
+            <h4>Control y Estadísticas</h4>
+            <p>Visualiza rápidamente el total de tus citas clasificadas por estado: programadas, completadas o canceladas.</p>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="feature-card">
+            <div class="feature-icon icon-pink">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
+            </div>
+            <h4>Acceso desde Cualquier Lugar</h4>
+            <p>Aplicación web moderna y responsive optimizada tanto para móviles como para ordenadores de escritorio.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Stats Section -->
-    <section class="stats-grid" aria-label="Estadísticas de citas">
-      <div class="stat-card">
-        <div class="stat-icon icon-blue">
-          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
-        </div>
-        <div class="stat-info">
-          <span class="stat-label">Total Citas</span>
-          <span class="stat-value" id="statTotal">0</span>
+    <section id="stats" class="landing-stats">
+      <div class="stats-bg-blur"></div>
+      <div class="section-container">
+        <div class="landing-stats-grid">
+          <div class="landing-stat-item">
+            <span class="landing-stat-number">+15k</span>
+            <span class="landing-stat-desc">Consultas Organizadas</span>
+          </div>
+          <div class="landing-stat-item">
+            <span class="landing-stat-number">99.9%</span>
+            <span class="landing-stat-desc">Disponibilidad del Servicio</span>
+          </div>
+          <div class="landing-stat-item">
+            <span class="landing-stat-number">4.9/5</span>
+            <span class="landing-stat-desc">Satisfacción de Pacientes</span>
+          </div>
         </div>
       </div>
+    </section>
+
+    <!-- CTA Final Section -->
+    <section class="landing-cta">
+      <div class="cta-container">
+        <h3>Comienza a organizar tu agenda hoy mismo</h3>
+        <p>Accede de forma gratuita y empieza a registrar tus turnos en un panel intuitivo y moderno.</p>
+        <button class="btn btn-primary btn-lg" onclick="navigateTo('/home')">
+          Ingresar al Panel de Citas
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- Landing Footer -->
+    <footer class="landing-footer">
+      <div class="footer-container">
+        <p>&copy; 2026 MediFlow. Todos los derechos reservados. Diseñado para un cuidado de la salud eficiente.</p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- VIEW: DASHBOARD -->
+  <div id="dashboardView" class="view hidden">
+    <!-- Header / Navigation -->
+    <header class="app-header">
+      <div class="header-container">
+        <div class="logo clickable-logo" onclick="navigateTo('/')">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="logo-icon"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+          <h1>MediFlow</h1>
+        </div>
+        <nav class="dashboard-nav">
+          <a href="/" class="nav-link" onclick="event.preventDefault(); navigateTo('/')">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px; vertical-align: middle;"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            Inicio
+          </a>
+        </nav>
+        <button class="btn btn-primary" id="btnOpenNewAppointment" aria-haspopup="dialog">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+          Nueva Cita
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="app-container">
       
-      <div class="stat-card">
-        <div class="stat-icon icon-yellow">
-          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      <!-- Stats Section -->
+      <section class="stats-grid" aria-label="Estadísticas de citas">
+        <div class="stat-card">
+          <div class="stat-icon icon-blue">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
+          </div>
+          <div class="stat-info">
+            <span class="stat-label">Total Citas</span>
+            <span class="stat-value" id="statTotal">0</span>
+          </div>
         </div>
-        <div class="stat-info">
-          <span class="stat-label">Pendientes</span>
-          <span class="stat-value" id="statScheduled">0</span>
+        
+        <div class="stat-card">
+          <div class="stat-icon icon-yellow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div class="stat-info">
+            <span class="stat-label">Pendientes</span>
+            <span class="stat-value" id="statScheduled">0</span>
+          </div>
         </div>
+
+        <div class="stat-card">
+          <div class="stat-icon icon-green">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          </div>
+          <div class="stat-info">
+            <span class="stat-label">Completadas</span>
+            <span class="stat-value" id="statCompleted">0</span>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon icon-red">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>
+          </div>
+          <div class="stat-info">
+            <span class="stat-label">Canceladas</span>
+            <span class="stat-value" id="statCancelled">0</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Content Area & Controls -->
+      <section class="content-header">
+        <div class="filter-bar">
+          <button class="filter-btn active" data-filter="all">Todas</button>
+          <button class="filter-btn" data-filter="scheduled">Programadas</button>
+          <button class="filter-btn" data-filter="completed">Completadas</button>
+          <button class="filter-btn" data-filter="cancelled">Canceladas</button>
+        </div>
+      </section>
+
+      <!-- Loading State -->
+      <div id="loadingIndicator" class="loading-container">
+        <div class="spinner"></div>
+        <p>Cargando citas...</p>
       </div>
 
-      <div class="stat-card">
-        <div class="stat-icon icon-green">
-          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-        </div>
-        <div class="stat-info">
-          <span class="stat-label">Completadas</span>
-          <span class="stat-value" id="statCompleted">0</span>
-        </div>
+      <!-- Empty State -->
+      <div id="emptyState" class="empty-state hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="empty-icon"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/><path d="m9 16 2 2 4-4"/></svg>
+        <h2>No hay citas registradas</h2>
+        <p>Comienza programando tu primera consulta médica haciendo clic en "Nueva Cita".</p>
       </div>
 
-      <div class="stat-card">
-        <div class="stat-icon icon-red">
-          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>
-        </div>
-        <div class="stat-info">
-          <span class="stat-label">Canceladas</span>
-          <span class="stat-value" id="statCancelled">0</span>
-        </div>
+      <!-- Grid / List of appointments -->
+      <div id="appointmentsGrid" class="appointments-grid">
+        <!-- Citas se renderizan dinámicamente aquí -->
       </div>
-    </section>
-
-    <!-- Content Area & Controls -->
-    <section class="content-header">
-      <div class="filter-bar">
-        <button class="filter-btn active" data-filter="all">Todas</button>
-        <button class="filter-btn" data-filter="scheduled">Programadas</button>
-        <button class="filter-btn" data-filter="completed">Completadas</button>
-        <button class="filter-btn" data-filter="cancelled">Canceladas</button>
-      </div>
-    </section>
-
-    <!-- Loading State -->
-    <div id="loadingIndicator" class="loading-container">
-      <div class="spinner"></div>
-      <p>Cargando citas...</p>
-    </div>
-
-    <!-- Empty State -->
-    <div id="emptyState" class="empty-state hidden">
-      <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="empty-icon"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/><path d="m9 16 2 2 4-4"/></svg>
-      <h2>No hay citas registradas</h2>
-      <p>Comienza programando tu primera consulta médica haciendo clic en "Nueva Cita".</p>
-    </div>
-
-    <!-- Grid / List of appointments -->
-    <div id="appointmentsGrid" class="appointments-grid">
-      <!-- Citas se renderizan dinámicamente aquí -->
-    </div>
-  </main>
+    </main>
+  </div>
 
   <!-- Notification Toast -->
   <div id="notificationToast" class="toast hidden" role="alert" aria-live="assertive"></div>
