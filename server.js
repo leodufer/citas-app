@@ -17,6 +17,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 // API Routes
 app.use('/api/appointments', appointmentRoutes);
 
+// Servir la página del Dashboard
+app.get('/home', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'home.html'));
+});
+
 // Fallback to index.html for Single Page Application behavior
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
