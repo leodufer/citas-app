@@ -42,12 +42,47 @@ const SERVICE_COLORS = {
 };
 
 // ----------------------------------------------------
+// Navigation & Routing
+// ----------------------------------------------------
+function navigateTo(path) {
+  window.history.pushState({}, '', path);
+  handleRoute();
+}
+
+function handleRoute() {
+  const path = window.location.pathname;
+  const landingView = document.getElementById('landingView');
+  const dashboardView = document.getElementById('dashboardView');
+
+  // Scroll to top on navigation
+  window.scrollTo({ top: 0, behavior: 'instant' });
+
+  if (path === '/home' || path === '/home/') {
+    landingView.classList.add('hidden');
+    dashboardView.classList.remove('hidden');
+    document.title = 'MediFlow - Panel de Gestión de Citas';
+    fetchAppointments();
+  } else {
+    // Default to landing page for all other paths
+    landingView.classList.remove('hidden');
+    dashboardView.classList.add('hidden');
+    document.title = 'MediFlow - Gestión de Citas Médicas';
+  }
+}
+
+// Expose navigateTo to window scope
+window.navigateTo = navigateTo;
+
+// ----------------------------------------------------
 // Initialization
 // ----------------------------------------------------
 document.addEventListener('DOMContentLoaded', () => {
-  fetchAppointments();
+  handleRoute();
   setupEventListeners();
   setupDialogLightDismissFallback();
+  
+  // Listen for back/forward browser navigation
+  window.addEventListener('popstate', handleRoute);
 });
 
 // ----------------------------------------------------
